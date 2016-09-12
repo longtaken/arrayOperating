@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>array</title>
+</head>
+<body>
+	<script>
+	Array.prototype.unique_a=function(){
+		var n=[];
+		for(var i=0;i<this.length;i++){
+			if(n.indexOf(this[i])==-1){
+				n.push(this[i]);
+			}
+		}
+		return n;
+	};
+	Array.prototype.unique_b=function(){
+		var n={},r=[];
+		for(var i=0;i<this.length;i++){
+			if(!n[this[i]]){
+				n[this[i]]=true;
+				r.push(this[i]);
+			}
+		}
+		return r;
+	};
+	Array.prototype.unique_c=function(){
+		var n=[this[0]];
+		for(var i=1;i<this.length;i++){
+			if(this.indexOf(this[i])==i){
+				n.push(this[i]);
+			}
+		}
+		return n;
+	};
+	Array.prototype.unique_d=function(){
+		this.sort();
+		var re=[this[0]];
+		for(var i=1;i<this.length;i++){
+			if(this[i]!==re[re.length-1]){
+				re.push(this[i]);
+			}
+		}
+		return re;
+	};
+	Array.prototype.unique_e=function(){
+		return Array.from(new Set(this));//ES6的set
+	};
+	Array.prototype.unique_f=function(){
+		var json={},arr=[];
+		for(var i=0;i<this.length;i++){
+			var key = this[i];
+			json[key]='';
+		}
+		for(var j in json){
+			arr.push(j);
+		}
+		return arr;//因为属性名都是字符串，所以最后展示出来都是字符串
+	};
+	
+
+	var arr=["1a","1",5,6,"1a","38",5,6];
+
+	console.log(arr.unique_a(),"one");
+	console.log(arr.unique_b(),"two");
+	console.log(arr.unique_c(),"three");
+	console.log(arr.unique_d(),"four");
+	console.log(arr.unique_e(),"five");
+	console.log(arr.unique_f(),"six");
+	</script>
+</body>
+</html>
