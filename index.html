@@ -58,16 +58,25 @@
 		}
 		return arr;//因为属性名都是字符串，所以最后展示出来都是字符串
 	};
-	
+	Array.prototype.unique_g = function(){
+		for(var i = 0; i < this.length - 1; i++){
+			for(var j = i+1; j < this.length; j++){
+				if(this[i] == this[j]){
+					this.splice(j--,1);
+				}
+			}
+		}
+		return this;
+	};
 
 	var arr=["1a","1",5,6,"1a","38",5,6];
-
 	console.log(arr.unique_a(),"one");
 	console.log(arr.unique_b(),"two");
 	console.log(arr.unique_c(),"three");
 	console.log(arr.unique_d(),"four");
 	console.log(arr.unique_e(),"five");
 	console.log(arr.unique_f(),"six");
+	console.log(arr.unique_g(),"seven");
 	</script>
 </body>
 </html>
